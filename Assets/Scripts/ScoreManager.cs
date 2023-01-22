@@ -4,8 +4,9 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; set; }
-    [SerializeField] private TextMeshProUGUI scoreText;
+
     public int score { get; set; }
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Start()
     {

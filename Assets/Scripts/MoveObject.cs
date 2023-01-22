@@ -8,11 +8,6 @@ public class MoveObject : MonoBehaviour
 
     private void Update()
     {
-        int del = ScoreManager.Instance.GetScore();
-        if (del > 0)
-        {
-            speed = speed + 0.01f / del;
-        }
         transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 }

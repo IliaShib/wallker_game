@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public void Start()
     {
         _animator = GetComponent<Animator>();
+        _animator.SetBool("Run", true);
+        _animator.SetBool("Fall", false);
     }
 
     public void Update()
