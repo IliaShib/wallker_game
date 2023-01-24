@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -16,24 +17,26 @@ public class Player : MonoBehaviour
         _animator.SetBool("Run", true);
         _animator.SetBool("Fall", false);
     }
+ 
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        Touch touch = Input.GetTouch(0);
+        if (touch.deltaPosition.x > 0f)
         {
             Physics2D.gravity = new Vector2(_gravity_forse, 0);
             _animator.SetBool("Run", true);
             _animator.SetBool("Fall", false);
             _characterSprite.flipY = false;
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (touch.deltaPosition.x < 0f)
         {
             Physics2D.gravity = new Vector2(-_gravity_forse, 0);
             _animator.SetBool("Run", true);
             _animator.SetBool("Fall", false);
             _characterSprite.flipY = true;
         }
-        else if (Input.GetKey(KeyCode.W))
+        else if (touch.deltaPosition.y > 0f)
         {
             transform.Translate(-Vector3.left * _speed * Time.deltaTime);
         }
