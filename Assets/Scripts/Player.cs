@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     public float _gravity_forse = 50f;
     public float _speed = 5;
+    public bool _isRight = false;
+    public bool _isLeft = true;
 
     public void Start()
     {
@@ -17,30 +19,29 @@ public class Player : MonoBehaviour
         _animator.SetBool("Run", true);
         _animator.SetBool("Fall", false);
     }
- 
 
-    public void Update()
+    public void Control()
     {
-        Touch touch = Input.GetTouch(0);
-        if (touch.deltaPosition.x > 0f)
+        if( _isRight == false && _isLeft)
         {
             Physics2D.gravity = new Vector2(_gravity_forse, 0);
             _animator.SetBool("Run", true);
             _animator.SetBool("Fall", false);
             _characterSprite.flipY = false;
+            _isRight = true;
+            _isLeft = false;
         }
-        if (touch.deltaPosition.x < 0f)
+        else if (_isLeft == false && _isRight)
         {
             Physics2D.gravity = new Vector2(-_gravity_forse, 0);
             _animator.SetBool("Run", true);
             _animator.SetBool("Fall", false);
             _characterSprite.flipY = true;
-        }
-        else if (touch.deltaPosition.y > 0f)
-        {
-            transform.Translate(-Vector3.left * _speed * Time.deltaTime);
+            _isRight = false;
+            _isLeft = true;
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {

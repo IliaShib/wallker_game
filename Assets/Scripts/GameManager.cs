@@ -5,6 +5,10 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject LoseWindow;
+    public GameObject TutorialWindow;
+    public GameObject PlayerMenu;
+    public GameObject Player;
+    public GameObject Spawner;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI bestScoreTxt;
@@ -40,5 +44,21 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneNumber);
         Time.timeScale = 1;
+    }
+
+    public void TutorialScene()
+    {
+        int Tutorial = PlayerPrefs.GetInt("Tutorial");
+        if (Tutorial == 0)
+        {
+            TutorialWindow.SetActive(true);
+            PlayerPrefs.SetInt("Tutorial", 1);
+        }
+        else
+        {
+            PlayerMenu.SetActive(true);
+            Player.SetActive(true);
+            Spawner.SetActive(true);
+        }
     }
 }

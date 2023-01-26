@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float timeToSpawn, minTime, maxTime = 3;
+    public float timeToSpawn, minTime = 1, maxTime = 3;
     public GameObject double_blockPref;
     public GameObject right_blockPref;
     public GameObject left_blockPref;
@@ -72,11 +72,6 @@ public class Spawner : MonoBehaviour
                     GameObject money = Instantiate(moneyPref, transform.position, Quaternion.identity);
                     money.transform.position = new Vector3(2f, money.transform.position.y + 0.5f, 0);
                 }
-            }
-            int del = ScoreManager.Instance.GetScore();
-            if (del > 0)
-            {
-                maxTime = maxTime - 1 / del;
             }
             timeToSpawn = Random.Range(minTime, maxTime);
 
