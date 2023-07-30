@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float _speed = 5;
     public bool _isRight = false;
     public bool _isLeft = true;
+    public bool _canMove = false;
 
     public void Start()
     {
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
 
     public void Control()
     {
-        if( _isRight == false && _isLeft)
+        if( _isRight == false && _isLeft && _canMove)
         {
             Physics2D.gravity = new Vector2(_gravity_forse, 0);
             _animator.SetBool("Run", true);
@@ -30,8 +31,9 @@ public class Player : MonoBehaviour
             _characterSprite.flipY = false;
             _isRight = true;
             _isLeft = false;
+            _canMove = false;
         }
-        else if (_isLeft == false && _isRight)
+        else if (_isLeft == false && _isRight && _canMove)
         {
             Physics2D.gravity = new Vector2(-_gravity_forse, 0);
             _animator.SetBool("Run", true);
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
             _characterSprite.flipY = true;
             _isRight = false;
             _isLeft = true;
+            _canMove = false;
         }
     }
 
@@ -48,6 +51,10 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Danger"))
         {
             GameManager.instance.Lose();
+        }
+        if (other.gameObject.CompareTag("Normal"))
+        {
+            _canMove = true;
         }
     }
 }

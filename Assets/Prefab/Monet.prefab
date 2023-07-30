@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7425389136445509345}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Monet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1020676642, guid: 79536cc82a968604180daf2f234cc6d6, type: 3}
-  m_Color: {r: 0.6509434, g: 0.50213796, b: 0.19958171, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,7 +114,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &7425389136445509345
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,7 +131,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8503806483509290426
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  audioClip: {fileID: 8300000, guid: 9c769ed491a4b6946996009ea982bf8c, type: 3}
 --- !u!61 &1441602039066097648
 BoxCollider2D:
   m_ObjectHideFlags: 0

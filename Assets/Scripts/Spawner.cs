@@ -15,16 +15,33 @@ public class Spawner : MonoBehaviour
     private int numDanger;
     private int chance;
     public float rst;
+    private bool check = true;
 
     private void Start()
     {
         timer = timeToSpawn;
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Danger") || other.gameObject.CompareTag("Normal"))
+        {
+            check = false;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Danger") || other.gameObject.CompareTag("Normal"))
+        {
+            check = true;
+        }
+    }
+
     private void Update()
     {
-        if (timer <= 0)
+        if (timer <= 0 && check)
         {
+
             numDanger = Random.Range(0, 5);
             timer = timeToSpawn;
             chance = 2;
@@ -74,6 +91,7 @@ public class Spawner : MonoBehaviour
                 }
             }
             timeToSpawn = Random.Range(minTime, maxTime);
+
 
         }
 
